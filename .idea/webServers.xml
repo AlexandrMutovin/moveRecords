@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8cf481ed-d804-46d1-a161-488d292dabe7" name="CallForce-24-demo">
+        <fileTransfer rootFolder="/root/" accessType="SFTP" host="10.112.62.5" port="22" sshConfigId="c85a540d-afbb-4f8c-a102-0d74d7faf199" sshConfig="root@10.112.62.5:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
