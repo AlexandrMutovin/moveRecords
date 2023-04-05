@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="Configuration" status="ERROR" monitorInterval="5" xmlns:xi="http://www.w3.org/2001/XInclude" packages="ru.voxlink">
+    <Properties>
+        <Property name="baseDir">/var/log</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="LogToFile" filename="${baseDir}/moveRecords/moveRecords.log" filePattern="${baseDir}/moveRecords/moveRecords--%d{yyyy-MM-dd-HH}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size = "10 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="ru.voxlink" level="debug" additivity="false">
+            <AppenderRef ref="LogToFile"></AppenderRef>
+        </Logger>
+    </Loggers>
+</Configuration>
+
