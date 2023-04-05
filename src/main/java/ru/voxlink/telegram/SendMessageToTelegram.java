@@ -22,7 +22,7 @@ public class SendMessageToTelegram {
     private final String PAGE_MAPPING = "/sendMessage?";
     private final String BOT_ID;
     private final String CHAT_ID;
-    private String textMassage = "Напишите текст сообщения";
+    private String textMassage = "Напишите текст сообщения!";
     private String tags = "";
     private String hostName = "";
 
