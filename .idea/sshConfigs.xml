@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig host="10.112.62.5" id="c85a540d-afbb-4f8c-a102-0d74d7faf199" keyPath="C:\Users\Alexandr\Desktop\Putty\key.ppk" port="22" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
-    </configs>
-  </component>
-</project>
