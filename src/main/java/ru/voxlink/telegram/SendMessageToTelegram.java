@@ -26,10 +26,10 @@ public class SendMessageToTelegram {
     private String tags = "";
     private String hostName = "";
 
-    public SendMessageToTelegram(String botId, String chatId, List<String> tags){
+    public SendMessageToTelegram(String botId, String chatId, List<String> tags) {
         this.BOT_ID = botId;
         this.CHAT_ID = chatId;
-        for (int i = 0; i < tags.size(); i++){
+        for (int i = 0; i < tags.size(); i++) {
             this.tags = this.tags + tags.get(i) + " ";
         }
         try {
@@ -40,12 +40,12 @@ public class SendMessageToTelegram {
 
     }
 
-    public void send(String message){
+    public void send(String message) {
 
         String resultMessage = tags + message;
         String encodeMessage = URLEncoder.encode(resultMessage, StandardCharsets.UTF_8);
         String uriTelegram = URL + BOT_ID + PAGE_MAPPING + "chat_id=" + CHAT_ID + "&" + "text=" + encodeMessage;
-                HttpClient client = HttpClient.newBuilder()
+        HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .followRedirects(HttpClient.Redirect.NEVER)
                 .connectTimeout(Duration.ofSeconds(10))
@@ -56,17 +56,16 @@ public class SendMessageToTelegram {
                 .build();
         try {
             HttpResponse<String> httpResponse = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-            if (httpResponse.body().contains("error_code")){
+            if (httpResponse.body().contains("error_code")) {
                 LOGGER.warn(hostName + "Ошибка отправки сообщения в телеграмм \"" + message + "\" ответ сервера " + httpResponse.body());
             }
-        } catch (HttpConnectTimeoutException e){
+        } catch (HttpConnectTimeoutException e) {
             LOGGER.warn(hostName + "Таймаут запроса при отправке ссобщения в телеграмм (возможно проблемы с интернетом)");
-        }
-          catch (IOException e) {
-            LOGGER.warn(hostName + "Ошибка отправки сообщения \"" + resultMessage + "\" в телеграмм. "  + e.getStackTrace().toString());
+        } catch (IOException e) {
+            LOGGER.warn(hostName + "Ошибка отправки сообщения \"" + resultMessage + "\" в телеграмм. " + e.getStackTrace().toString());
 
         } catch (InterruptedException e) {
-            LOGGER.warn(hostName+ "Ошибка отправки сообщения в телеграмм \"" + resultMessage + "\" " + e);
+            LOGGER.warn(hostName + "Ошибка отправки сообщения в телеграмм \"" + resultMessage + "\" " + e);
         } catch (RuntimeException e) {
             LOGGER.warn(hostName + "Ошибка отправки сообщения в телеграмм \"" + resultMessage + "\" " + e);
         }
